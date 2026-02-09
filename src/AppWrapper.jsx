@@ -8,6 +8,9 @@ import DashboardPage from './pages/dashboard/Dashboard'
 import DQAImplementationsPage from './pages/dqa-implementations/DQA-Implementations'
 import SettingsPage from './pages/settings/Settings'
 import DQAPlanningAndReportingPage from './pages/dqa-implementations/DQA-Planning-and-Reporting'
+import 'bootstrap/dist/css/bootstrap-grid.min.css'
+import 'bootstrap/dist/css/bootstrap-utilities.min.css'
+
 const AppWrapper = () => {
     return (
         <div className={classes.appWrapper}>

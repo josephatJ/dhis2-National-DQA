@@ -26,7 +26,7 @@ const AppMenu = () => {
                     onClick={() => {
                         navigate(`/settings`)
                     }}
-                    label="About"
+                    label="Settings"
                 />
             </Menu>
         </div>

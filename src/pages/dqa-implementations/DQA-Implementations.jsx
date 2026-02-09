@@ -1,50 +1,44 @@
 import { useState } from 'react'
-import { SegmentedControl } from '@dhis2/ui'
-import { Button } from '@dhis2/ui'
-import { useNavigate, useLocation } from 'react-router'
+import { SegmentedControl, Button } from '@dhis2/ui'
+import { useNavigate } from 'react-router'
 import DQAPlansList from './components/dqa-plans-list'
 import DQAReportsList from './components/dqa-reports-list'
-import { ControlType } from '../../types/dqa'
+import { CONTROL_TYPES } from '../../types/dqa'
+
+const options = [
+    { label: 'DQA Plans', value: CONTROL_TYPES.PLANS },
+    { label: 'DQA Reports', value: CONTROL_TYPES.REPORTS },
+]
 
 const DQAImplementationsPage = () => {
     const navigate = useNavigate()
-    const options = [
-        { label: 'DQA Plans', value: 'plans' },
-        { label: 'DQA Reports', value: 'reports' },
-    ]
-    const [selectedControl, setSelectedControl] =
-        useState < ControlType > 'plans'
+
+    const [selectedControl, setSelectedControl] = useState(CONTROL_TYPES.PLANS)
+
     return (
         <div>
-            <h3>[Under construction]</h3>
-            <div>
-                A placeholder for an DQA Implementations page showing under a
-                separate client-side route
-            </div>
+            <h3>DQA Implementations</h3>
 
-            <div>
+            <div className="p-2 mb-2 d-flex justify-content-end">
                 <Button
                     small
                     primary
-                    onClick={() => {
-                        navigate(`/dqa-implementations/new`)
-                    }}
+                    onClick={() => navigate('/dqa-implementations/new')}
                 >
                     + New DQA Plan
                 </Button>
             </div>
+
             <SegmentedControl
                 options={options}
                 selected={selectedControl}
-                onChange={({ value }) => {
-                    console.log(value)
-                    setSelectedControl(value)
-                }}
+                onChange={({ value }) => setSelectedControl(value)}
             />
 
-            {/* {selectedControl === 'plans' && <DQAPlansList />}
-            {selectedControl === 'reports' && <DQAReportsList />} */}
+            {selectedControl === CONTROL_TYPES.PLANS && <DQAPlansList />}
+            {selectedControl === CONTROL_TYPES.REPORTS && <DQAReportsList />}
         </div>
     )
 }
+
 export default DQAImplementationsPage
